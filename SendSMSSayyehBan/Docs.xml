@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SendSMSSayyehBan</name>
+    </assembly>
+    <members>
+        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPattern(SendSMSSayyehBan.Model.SendPattern)">
+            <summary>
+            ارسال پیامک به صورت پترن
+            </summary>
+            <param name="sendPattern"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.BaseModel.APILink">
+            <summary>
+            این قسمت اختیاری هستش اگر نیاز به بروزرسانی باشه
+            درون package
+            https://www.nuget.org/packages/SayyehBanTools
+            بروز میشه اگر نشد باز شما آدرس جدید ارسال با API
+            قرار میدید تا کارتون پیش بره
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.BaseModel.APIKey">
+            <summary>
+            این قسمت 
+            APIKey
+            هستش که از سامانه دریافت میکنید من به صورت 
+            Header
+            در نیاوردم چون قرار نیست سامانه پیامکی بنویسید بلکه قرار هستش به کاربران خودبون از درون سورس هامون ارسال پیامک انجام بدیم
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.BaseModel.FromNumber">
+            <summary>
+            شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505هستش ولی باز عوض شد شماره دیگه بهش بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.BaseModel.ToNumber">
+            <summary>
+            این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPattern.PatternCode">
+            <summary>
+            این هم نام پترن کد هستش که قرار بر حسب کدام پترن ارسال انجام بشه.
+            </summary>
+        </member>
+    </members>
+</doc>
