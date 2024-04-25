@@ -66,6 +66,33 @@ public class SMS_SayyehBanController : ControllerBase
         {
             return BadRequest("Error sending SMS: " + responseContent);
         }
+    }    /// <summary>
+    /// ارسال پیامک به صورت نا همزمان
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    [HttpPost]
+    public async Task<IActionResult> SendPeerToPeerAsync(SendPeerToPeerRequest model)
+    {
+        if (model == null)
+        {
+            return BadRequest("Invalid request body");
+        }
+
+        var (response, responseContent) = await SMS_System.SendPeerToPeerAsync(model.APILink,model.APIKey,model.Recipients,model.FromNumber,model.Messages);
+
+        if (response != null)
+        {
+            return new ContentResult
+            {
+                Content = response,
+                ContentType = "application/json",
+            };
+        }
+        else
+        {
+            return BadRequest("Error sending SMS: " + responseContent);
+        }
     }
     /// <summary>
     /// نمایش موجودی شارژ پانل

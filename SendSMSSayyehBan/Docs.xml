@@ -18,6 +18,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPeerToPeerAsync(SendSMSSayyehBan.Model.SendPeerToPeerRequest)">
+            <summary>
+            ارسال پیامک به صورت نا همزمان
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.GetCredit(SendSMSSayyehBan.Model.BaseModel)">
             <summary>
             نمایش موجودی شارژ پانل
@@ -93,6 +100,21 @@
         <member name="P:SendSMSSayyehBan.Model.GetSendListModel.per_page">
             <summary>
             نمایش تعداد صفحه مورد نظر
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.Recipients">
+            <summary>
+             دریافت شماره مخاطب به صورت آرایه که به صورت ناهمزمان بهشون پیام ارسال بشه
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.FromNumber">
+            <summary>
+            شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.Messages">
+            <summary>
+            ارسال متن به صورت ناهمزمان و آرایه برحسب شماره های ناهمزان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
             </summary>
         </member>
     </members>

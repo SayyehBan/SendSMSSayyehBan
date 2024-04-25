@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using static SayyehBanTools.Sender.SMS_System;
 
 namespace SendSMSSayyehBan.Model;
 
@@ -36,7 +37,8 @@ public class SendPattern : BaseModel
     public string ToNumber { get; set; }
 }
 public class SendNormalSingleModel : BaseModel
-{    /// <summary>
+{ 
+    /// <summary>
      /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
      /// </summary>
     public string FromNumber { get; set; } = "+983000505";
@@ -63,5 +65,19 @@ public class GetSendListModel : BaseModel
     /// نمایش تعداد صفحه مورد نظر
     /// </summary>
     public int per_page { get; set; } = 10;
+}
 
+public class SendPeerToPeerRequest : BaseModel
+{    /// <summary>
+     ///  دریافت شماره مخاطب به صورت آرایه که به صورت ناهمزمان بهشون پیام ارسال بشه
+     /// </summary>
+    public List<List<string>> Recipients { get; set; }
+    /// <summary>
+    /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
+    /// </summary>
+    public string FromNumber { get; set; } = "+983000505";
+    /// <summary>
+    /// ارسال متن به صورت ناهمزمان و آرایه برحسب شماره های ناهمزان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
+    /// </summary>
+    public string[] Messages { get; set; }
 }
