@@ -18,6 +18,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.GetCredit(SendSMSSayyehBan.Model.BaseModel)">
+            <summary>
+            نمایش موجودی شارژ پانل
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.GetSendList(SendSMSSayyehBan.Model.GetSendListModel)">
+            <summary>
+            نمایش پیام های ارسال شده
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="P:SendSMSSayyehBan.Model.BaseModel.APILink">
             <summary>
             این قسمت اختیاری هستش اگر نیاز به بروزرسانی باشه
@@ -36,9 +50,9 @@
             در نیاوردم چون قرار نیست سامانه پیامکی بنویسید بلکه قرار هستش به کاربران خودبون از درون سورس هامون ارسال پیامک انجام بدیم
             </summary>
         </member>
-        <member name="P:SendSMSSayyehBan.Model.BaseModel.FromNumber">
+        <member name="P:SendSMSSayyehBan.Model.SendPattern.FromNumber">
             <summary>
-            شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505هستش ولی باز عوض شد شماره دیگه بهش بدید
+            شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendPattern.PatternCode">
@@ -49,6 +63,11 @@
         <member name="P:SendSMSSayyehBan.Model.SendPattern.ToNumber">
             <summary>
             این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.FromNumber">
+            <summary>
+            شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.ToNumber">
@@ -64,6 +83,16 @@
         <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.Message">
             <summary>
             متن ارسال پیامک
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.GetSendListModel.page">
+            <summary>
+            دریافت شماره صفحه جاری
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.GetSendListModel.per_page">
+            <summary>
+            نمایش تعداد صفحه مورد نظر
             </summary>
         </member>
     </members>
