@@ -11,6 +11,13 @@
             <param name="sendPattern"></param>
             <returns></returns>
         </member>
+        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendNormalSingle(SendSMSSayyehBan.Model.SendNormalSingleModel)">
+            <summary>
+            ارسال پیامک به صورت سینگل یا آرایه از شماره ها
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="P:SendSMSSayyehBan.Model.BaseModel.APILink">
             <summary>
             این قسمت اختیاری هستش اگر نیاز به بروزرسانی باشه
@@ -34,14 +41,29 @@
             شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505هستش ولی باز عوض شد شماره دیگه بهش بدید
             </summary>
         </member>
-        <member name="P:SendSMSSayyehBan.Model.BaseModel.ToNumber">
+        <member name="P:SendSMSSayyehBan.Model.SendPattern.PatternCode">
+            <summary>
+            این هم نام پترن کد هستش که قرار بر حسب کدام پترن ارسال انجام بشه.
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPattern.ToNumber">
             <summary>
             این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش بدید
             </summary>
         </member>
-        <member name="P:SendSMSSayyehBan.Model.SendPattern.PatternCode">
+        <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.ToNumber">
             <summary>
-            این هم نام پترن کد هستش که قرار بر حسب کدام پترن ارسال انجام بشه.
+            این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش پیام بدید به صورت آرایه
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.DateTimerSender">
+            <summary>
+            تعریف تاریخ و زمان ارسال که باید تاریخ و زمان ارسال به میلادی بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.Message">
+            <summary>
+            متن ارسال پیامک
             </summary>
         </member>
     </members>

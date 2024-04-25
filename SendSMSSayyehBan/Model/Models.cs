@@ -1,4 +1,6 @@
-﻿namespace SendSMSSayyehBan.Model;
+﻿using Microsoft.VisualBasic;
+
+namespace SendSMSSayyehBan.Model;
 
 public class BaseModel
 {
@@ -22,11 +24,6 @@ public class BaseModel
     /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505هستش ولی باز عوض شد شماره دیگه بهش بدید
     /// </summary>
     public string FromNumber { get; set; } = "+983000505";
-    /// <summary>
-    /// این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش بدید
-    /// </summary>
-    public string ToNumber { get; set; }
-   
 }
 public class SendPattern : BaseModel
 {
@@ -34,16 +31,23 @@ public class SendPattern : BaseModel
     /// این هم نام پترن کد هستش که قرار بر حسب کدام پترن ارسال انجام بشه.
     /// </summary>
     public string PatternCode { get; set; }
+    /// <summary>
+    /// این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش بدید
+    /// </summary>
+    public string ToNumber { get; set; }
 }
-public class ResponseModel
+public class SendNormalSingleModel : BaseModel
 {
-    public string status { get; set; }
-    public int code { get; set; }
-    public string error_message { get; set; }
-    public DataModel data { get; set; }
-}
-
-public class DataModel
-{
-    public int message_id { get; set; }
+    /// <summary>
+    /// این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش پیام بدید به صورت آرایه
+    /// </summary>
+    public string[] ToNumber { get; set; }
+    /// <summary>
+    /// تعریف تاریخ و زمان ارسال که باید تاریخ و زمان ارسال به میلادی بدید
+    /// </summary>
+    public DateTime DateTimerSender { get; set; }
+    /// <summary>
+    /// متن ارسال پیامک
+    /// </summary>
+    public string Message { get; set; }
 }

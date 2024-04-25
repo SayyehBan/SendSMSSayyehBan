@@ -41,6 +41,35 @@ namespace SendSMSSayyehBan.Controllers
                 return NotFound(); // پیام خطا را انتقال دهید
             }
         }
+        /// <summary>
+        /// ارسال پیامک به صورت سینگل یا آرایه از شماره ها
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> SendNormalSingle([FromForm] SendNormalSingleModel model)
+        {
+            if (model == null)
+            {
+                return BadRequest("Invalid request body");
+            }
+
+            var (response, responseContent) = await SendSmsPattern.SendNormalSingleAsync(model.APILink,model.APIKey,model.FromNumber,model.ToNumber,model.Message,model.DateTimerSender);
+
+            if (response != null)
+            {
+                return new ContentResult
+                {
+                    Content = responseContent,
+                    ContentType = "application/json",
+                    StatusCode = (int)response.StatusCode
+                };
+            }
+            else
+            {
+                return BadRequest("Error sending SMS: " + responseContent);
+            }
+        }
 
     }
 }
