@@ -98,7 +98,7 @@ public class SMS_SayyehBanController : ControllerBase
         }
     }
     /// <summary>
-    /// ارسال پیامک به صورت همزمان
+    /// ارسال پیامک به صورت همزمان توسط فایل
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
