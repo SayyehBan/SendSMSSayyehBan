@@ -20,7 +20,14 @@
         </member>
         <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPeerToPeerAsync(SendSMSSayyehBan.Model.SendPeerToPeerRequest)">
             <summary>
-            ارسال پیامک به صورت نا همزمان
+            ارسال پیامک به صورت همزمان
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPeerToPeerByFileAsync(SendSMSSayyehBan.Model.SendPeerToPeerFileRequest)">
+            <summary>
+            ارسال پیامک به صورت همزمان
             </summary>
             <param name="model"></param>
             <returns></returns>
@@ -104,7 +111,7 @@
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.Recipients">
             <summary>
-             دریافت شماره مخاطب به صورت آرایه که به صورت ناهمزمان بهشون پیام ارسال بشه
+             دریافت شماره مخاطب به صورت آرایه که به صورت همزمان بهشون پیام ارسال بشه
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.FromNumber">
@@ -114,7 +121,17 @@
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.Messages">
             <summary>
-            ارسال متن به صورت ناهمزمان و آرایه برحسب شماره های ناهمزان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
+            ارسال متن به صورت همزمان و آرایه برحسب شماره های همزمان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerFileRequest.FromNumber">
+            <summary>
+            شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerFileRequest.File">
+            <summary>
+            ارسال فایل اکسل برای ارسال همزمان
             </summary>
         </member>
     </members>

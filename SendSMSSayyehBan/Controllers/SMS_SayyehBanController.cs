@@ -66,8 +66,9 @@ public class SMS_SayyehBanController : ControllerBase
         {
             return BadRequest("Error sending SMS: " + responseContent);
         }
-    }    /// <summary>
-    /// ارسال پیامک به صورت نا همزمان
+    }  
+    /// <summary>
+    /// ارسال پیامک به صورت همزمان
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
@@ -92,6 +93,34 @@ public class SMS_SayyehBanController : ControllerBase
         else
         {
             return BadRequest("Error sending SMS: " + responseContent);
+        }
+    }
+    /// <summary>
+    /// ارسال پیامک به صورت همزمان
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    [HttpPost]
+    public async Task<IActionResult> SendPeerToPeerByFileAsync(SendPeerToPeerFileRequest model)
+    {
+        if (model == null)
+        {
+            return BadRequest("Invalid request body");
+        }
+
+        var response = await SMS_System.SendPeerToPeerByFileAsync(model.APILink,model.APIKey,model.FromNumber,model.File);
+
+        if (response != null)
+        {
+            return new ContentResult
+            {
+                Content = response,
+                ContentType = "application/json",
+            };
+        }
+        else
+        {
+            return BadRequest("Error sending SMS: " + response);
         }
     }
     /// <summary>

@@ -69,7 +69,7 @@ public class GetSendListModel : BaseModel
 
 public class SendPeerToPeerRequest : BaseModel
 {    /// <summary>
-     ///  دریافت شماره مخاطب به صورت آرایه که به صورت ناهمزمان بهشون پیام ارسال بشه
+     ///  دریافت شماره مخاطب به صورت آرایه که به صورت همزمان بهشون پیام ارسال بشه
      /// </summary>
     public List<List<string>> Recipients { get; set; }
     /// <summary>
@@ -77,7 +77,17 @@ public class SendPeerToPeerRequest : BaseModel
     /// </summary>
     public string FromNumber { get; set; } = "+983000505";
     /// <summary>
-    /// ارسال متن به صورت ناهمزمان و آرایه برحسب شماره های ناهمزان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
+    /// ارسال متن به صورت همزمان و آرایه برحسب شماره های همزمان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
     /// </summary>
     public string[] Messages { get; set; }
+}
+public class SendPeerToPeerFileRequest : BaseModel
+{    /// <summary>
+     /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
+     /// </summary>
+    public string FromNumber { get; set; } = "+983000505";
+    /// <summary>
+    /// ارسال فایل اکسل برای ارسال همزمان
+    /// </summary>
+    public IFormFile File { get; set; }
 }
