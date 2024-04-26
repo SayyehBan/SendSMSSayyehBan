@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SayyehBanTools.Sender;
 using SendSMSSayyehBan.Model;
+using System.Globalization;
 using System.Net;
 
 namespace SendSMSSayyehBan.Controllers;
@@ -50,8 +51,9 @@ public class SMS_SayyehBanController : ControllerBase
         {
             return BadRequest("Invalid request body");
         }
-
-        var (response, responseContent) = await SMS_System.SendNormalSingleAsync(model.APILink,model.APIKey,model.FromNumber,model.ToNumber,model.Message,model.DateTimerSender);
+        DateTime dateTime = model.DateTimerSender ?? DateTime.UtcNow;
+        var formattedDateTime = dateTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture);
+        var (response, responseContent) = await SMS_System.SendNormalSingleAsync(model.APILink, model.APIKey, model.FromNumber, model.ToNumber, model.Message, DateTime.Parse(formattedDateTime));
 
         if (response != null)
         {
@@ -66,7 +68,7 @@ public class SMS_SayyehBanController : ControllerBase
         {
             return BadRequest("Error sending SMS: " + responseContent);
         }
-    }  
+    }
     /// <summary>
     /// ارسال پیامک به صورت همزمان
     /// </summary>
@@ -80,7 +82,7 @@ public class SMS_SayyehBanController : ControllerBase
             return BadRequest("Invalid request body");
         }
 
-        var (response, responseContent) = await SMS_System.SendPeerToPeerAsync(model.APILink,model.APIKey,model.Recipients,model.FromNumber,model.Messages);
+        var (response, responseContent) = await SMS_System.SendPeerToPeerAsync(model.APILink, model.APIKey, model.Recipients, model.FromNumber, model.Messages);
 
         if (response != null)
         {
@@ -108,7 +110,7 @@ public class SMS_SayyehBanController : ControllerBase
             return BadRequest("Invalid request body");
         }
 
-        var response = await SMS_System.SendPeerToPeerByFileAsync(model.APILink,model.APIKey,model.FromNumber,model.File);
+        var response = await SMS_System.SendPeerToPeerByFileAsync(model.APILink, model.APIKey, model.FromNumber, model.File);
 
         if (response != null)
         {
@@ -162,7 +164,7 @@ public class SMS_SayyehBanController : ControllerBase
         {
             return BadRequest("Invalid request body");
         }
-        var (response, responseContent) = await SMS_System.GetSendListAsync(model.APILink, model.APIKey,model.page,model.per_page);
+        var (response, responseContent) = await SMS_System.GetSendListAsync(model.APILink, model.APIKey, model.page, model.per_page);
 
         if (response != null)
         {

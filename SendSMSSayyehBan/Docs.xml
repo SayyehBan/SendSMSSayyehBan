@@ -92,6 +92,7 @@
         <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.DateTimerSender">
             <summary>
             تعریف تاریخ و زمان ارسال که باید تاریخ و زمان ارسال به میلادی بدید
+            اگر تاریخ و زمان به میلادی پیش فرض ندید سیستم به صورت پیش تاریخ و زمان جاری ست میکنه ولی برحسب Utceثبت میشه تا ارسال انجام بشه
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.Message">

@@ -48,8 +48,9 @@ public class SendNormalSingleModel : BaseModel
     public string[] ToNumber { get; set; }
     /// <summary>
     /// تعریف تاریخ و زمان ارسال که باید تاریخ و زمان ارسال به میلادی بدید
+    /// اگر تاریخ و زمان به میلادی پیش فرض ندید سیستم به صورت پیش تاریخ و زمان جاری ست میکنه ولی برحسب Utceثبت میشه تا ارسال انجام بشه
     /// </summary>
-    public DateTime DateTimerSender { get; set; }
+    public DateTime? DateTimerSender { get; set; }
     /// <summary>
     /// متن ارسال پیامک
     /// </summary>
