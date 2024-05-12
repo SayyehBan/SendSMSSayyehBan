@@ -18,8 +18,13 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SayyehBanTools" Version="1.3.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SayyehBanTools">
+      <HintPath>..\..\..\..\..\..\SayyehBan\Dll\SayyehBanTools\SayyehBanTools\bin\Debug\net8.0\SayyehBanTools.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

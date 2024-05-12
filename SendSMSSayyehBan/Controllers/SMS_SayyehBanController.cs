@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SayyehBanTools.Sender;
 using SendSMSSayyehBan.Model;
-using System.Globalization;
 using System.Net;
 
 namespace SendSMSSayyehBan.Controllers;
@@ -22,9 +21,11 @@ public class SMS_SayyehBanController : ControllerBase
         Dictionary<string, object> dicDataSMS = new Dictionary<string, object>
         {
             ["DisposablePassword"] = "2583",
-            ["Cemetery"] = "سایه بان",
+            ["Cemetery"] = "شهریار"
         };
-        var (response, responseContent) = await SMS_System.SendPatternAsync(sendPattern.APILink, sendPattern.APIKey, dicDataSMS, sendPattern.PatternCode, sendPattern.FromNumber, sendPattern.ToNumber);
+        //DateTime dateTime = sendPattern.DateTimerSender ?? DateTime.UtcNow;
+        //var formattedDateTime = dateTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture);
+        var (response, responseContent) = await SMS_System.SendPatternAsync(sendPattern.APILink, sendPattern.APIKey, dicDataSMS, sendPattern.PatternCode, sendPattern.FromNumber, sendPattern.ToNumber,sendPattern.DateTimerSender);
         if (response != null)
         {
             return new ContentResult
@@ -51,9 +52,9 @@ public class SMS_SayyehBanController : ControllerBase
         {
             return BadRequest("Invalid request body");
         }
-        DateTime dateTime = model.DateTimerSender ?? DateTime.UtcNow;
-        var formattedDateTime = dateTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture);
-        var (response, responseContent) = await SMS_System.SendNormalSingleAsync(model.APILink, model.APIKey, model.FromNumber, model.ToNumber, model.Message, DateTime.Parse(formattedDateTime));
+        //DateTime dateTime = model.DateTimerSender ?? DateTime.UtcNow;
+        //var formattedDateTime = dateTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture);
+        var (response, responseContent) = await SMS_System.SendNormalSingleAsync(model.APILink, model.APIKey, model.FromNumber, model.ToNumber, model.Message, model.DateTimerSender);
 
         if (response != null)
         {

@@ -27,7 +27,7 @@
         </member>
         <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPeerToPeerByFileAsync(SendSMSSayyehBan.Model.SendPeerToPeerFileRequest)">
             <summary>
-            ارسال پیامک به صورت همزمان
+            ارسال پیامک به صورت همزمان توسط فایل
             </summary>
             <param name="model"></param>
             <returns></returns>
@@ -77,6 +77,12 @@
         <member name="P:SendSMSSayyehBan.Model.SendPattern.ToNumber">
             <summary>
             این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendPattern.DateTimerSender">
+            <summary>
+            تعریف تاریخ و زمان ارسال که باید تاریخ و زمان ارسال به میلادی بدید
+            اگر تاریخ و زمان به میلادی پیش فرض ندید سیستم به صورت پیش تاریخ و زمان جاری ست میکنه ولی برحسب Utceثبت میشه تا ارسال انجام بشه
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.FromNumber">
