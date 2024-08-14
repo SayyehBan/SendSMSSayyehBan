@@ -71,6 +71,36 @@ public class SMS_SayyehBanController : ControllerBase
         }
     }
     /// <summary>
+    /// ارسال پیامک به صورت فایل
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    [HttpPost]
+    public async Task<IActionResult> SendNormalFile([FromForm] SendNormalFileModel model)
+    {
+        if (model == null)
+        {
+            return BadRequest("Invalid request body");
+        }
+        //DateTime dateTime = model.DateTimerSender ?? DateTime.UtcNow;
+        //var formattedDateTime = dateTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture);
+        var response = await SMS_System.SendNormalFileAsync(model.APILink, model.APIKey,model.Sender,model.To,model.Message);
+
+
+        if (response != null)
+        {
+            return new ContentResult
+            {
+                Content = response,
+                ContentType = "application/json",
+            };
+        }
+        else
+        {
+            return BadRequest("Error sending SMS: " + response);
+        }
+    }
+    /// <summary>
     /// ارسال پیامک به صورت همزمان
     /// </summary>
     /// <param name="model"></param>

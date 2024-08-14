@@ -18,6 +18,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendNormalFile(SendSMSSayyehBan.Model.SendNormalFileModel)">
+            <summary>
+            ارسال پیامک به صورت فایل
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPeerToPeerAsync(SendSMSSayyehBan.Model.SendPeerToPeerRequest)">
             <summary>
             ارسال پیامک به صورت همزمان
@@ -102,6 +109,21 @@
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.Message">
+            <summary>
+            متن ارسال پیامک
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendNormalFileModel.Sender">
+            <summary>
+            شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendNormalFileModel.To">
+            <summary>
+            این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش پیام بدید به صورت آرایه
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.SendNormalFileModel.Message">
             <summary>
             متن ارسال پیامک
             </summary>

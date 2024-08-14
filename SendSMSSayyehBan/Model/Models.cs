@@ -61,6 +61,21 @@ public class SendNormalSingleModel : BaseModel
     /// </summary>
     public string Message { get; set; }
 }
+public class SendNormalFileModel : BaseModel
+{
+    /// <summary>
+    /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
+    /// </summary>
+    public string Sender { get; set; } = "+983000505";
+    /// <summary>
+    /// این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش پیام بدید به صورت آرایه
+    /// </summary>
+    public IFormFile To { get; set; }
+    /// <summary>
+    /// متن ارسال پیامک
+    /// </summary>
+    public string Message { get; set; }
+}
 public class GetSendListModel : BaseModel
 {
     /// <summary>
