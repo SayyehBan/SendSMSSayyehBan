@@ -1,8 +1,10 @@
 ﻿using Microsoft.VisualBasic;
-using static SayyehBanTools.Sender.SMS_System;
+using static SayehBanTools.Sender.SMS_System;
 
 namespace SendSMSSayyehBan.Model;
-
+/// <summary>
+/// اطلاعات پایه
+/// </summary>
 public class BaseModel
 {
     /// <summary>
@@ -20,8 +22,11 @@ public class BaseModel
     /// Header
     /// در نیاوردم چون قرار نیست سامانه پیامکی بنویسید بلکه قرار هستش به کاربران خودبون از درون سورس هامون ارسال پیامک انجام بدیم
     /// </summary>
-    public string APIKey { get; set; }
+    public string APIKey { get; set; } = string.Empty;
 }
+/// <summary>
+/// ارسال پترن
+/// </summary>
 public class SendPattern : BaseModel
 {    /// <summary>
      /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
@@ -30,17 +35,20 @@ public class SendPattern : BaseModel
     /// <summary>
     /// این هم نام پترن کد هستش که قرار بر حسب کدام پترن ارسال انجام بشه.
     /// </summary>
-    public string PatternCode { get; set; }
+    public string PatternCode { get; set; } = string.Empty;
     /// <summary>
     /// این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش بدید
     /// </summary>
-    public string ToNumber { get; set; }
+    public string ToNumber { get; set; } = string.Empty;
     /// <summary>
     /// تعریف تاریخ و زمان ارسال که باید تاریخ و زمان ارسال به میلادی بدید
     /// اگر تاریخ و زمان به میلادی پیش فرض ندید سیستم به صورت پیش تاریخ و زمان جاری ست میکنه ولی برحسب Utceثبت میشه تا ارسال انجام بشه
     /// </summary>
     public DateTime? DateTimerSender { get; set; }
 }
+/// <summary>
+/// ارسال معمولی تک
+/// </summary>
 public class SendNormalSingleModel : BaseModel
 {
     /// <summary>
@@ -50,7 +58,7 @@ public class SendNormalSingleModel : BaseModel
     /// <summary>
     /// این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش پیام بدید به صورت آرایه
     /// </summary>
-    public string[] ToNumber { get; set; }
+    public string[] ToNumber { get; set; } = [];
     /// <summary>
     /// تعریف تاریخ و زمان ارسال که باید تاریخ و زمان ارسال به میلادی بدید
     /// اگر تاریخ و زمان به میلادی پیش فرض ندید سیستم به صورت پیش تاریخ و زمان جاری ست میکنه ولی برحسب Utceثبت میشه تا ارسال انجام بشه
@@ -59,8 +67,11 @@ public class SendNormalSingleModel : BaseModel
     /// <summary>
     /// متن ارسال پیامک
     /// </summary>
-    public string Message { get; set; }
+    public string Message { get; set; } = string.Empty;
 }
+/// <summary>
+/// ارسال معمولی به صورت فایل
+/// </summary>
 public class SendNormalFileModel : BaseModel
 {
     /// <summary>
@@ -70,12 +81,15 @@ public class SendNormalFileModel : BaseModel
     /// <summary>
     /// این قسمت هم کسی که قرار هستش شماره دریافت کنه بهش پیام بدید به صورت آرایه
     /// </summary>
-    public IFormFile To { get; set; }
+    public IFormFile To { get; set; } = null!;
     /// <summary>
     /// متن ارسال پیامک
     /// </summary>
-    public string Message { get; set; }
+    public string Message { get; set; } = string.Empty;
 }
+/// <summary>
+/// دریافت لیست مدل
+/// </summary>
 public class GetSendListModel : BaseModel
 {
     /// <summary>
@@ -87,12 +101,14 @@ public class GetSendListModel : BaseModel
     /// </summary>
     public int per_page { get; set; } = 10;
 }
-
+/// <summary>
+/// ارسال نظر به نظیر
+/// </summary>
 public class SendPeerToPeerRequest : BaseModel
 {    /// <summary>
      ///  دریافت شماره مخاطب به صورت آرایه که به صورت همزمان بهشون پیام ارسال بشه
      /// </summary>
-    public List<List<string>> Recipients { get; set; }
+    public List<List<string>> Recipients { get; set; } = new List<List<string>>();
     /// <summary>
     /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
     /// </summary>
@@ -100,8 +116,11 @@ public class SendPeerToPeerRequest : BaseModel
     /// <summary>
     /// ارسال متن به صورت همزمان و آرایه برحسب شماره های همزمان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
     /// </summary>
-    public string[] Messages { get; set; }
+    public string[] Messages { get; set; } = [];
 }
+/// <summary>
+/// ارسال نظر به نظیر
+/// </summary>
 public class SendPeerToPeerFileRequest : BaseModel
 {    /// <summary>
      /// شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
@@ -110,5 +129,5 @@ public class SendPeerToPeerFileRequest : BaseModel
     /// <summary>
     /// ارسال فایل اکسل برای ارسال همزمان
     /// </summary>
-    public IFormFile File { get; set; }
+    public IFormFile File { get; set; } = null!;
 }

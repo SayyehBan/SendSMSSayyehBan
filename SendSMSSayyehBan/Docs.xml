@@ -4,54 +4,129 @@
         <name>SendSMSSayyehBan</name>
     </assembly>
     <members>
-        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPattern(SendSMSSayyehBan.Model.SendPattern)">
+        <member name="T:SendSMSSayyehBan.Config.SwaggerExtension">
+            <summary>
+            افزونه swagger
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Config.SwaggerExtension.AddOurSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            اضافه کردن افزونه
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SendSMSSayyehBan.Config.RemoveVersionFromParameterFilter">
+            <summary>
+            فیلتر برای حذف کامل پارامتر api-version از کل Swagger Document
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Config.RemoveVersionFromParameterFilter.Apply(Microsoft.OpenApi.Models.OpenApiDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <summary>
+            اعمال فیلتر روی Swagger Document
+            </summary>
+            <param name="swaggerDoc">Swagger Document</param>
+            <param name="context">Document Filter Context</param>
+        </member>
+        <member name="M:SendSMSSayyehBan.Config.RemoveVersionFromParameterFilter.RemoveVersionParametersFromPath(Microsoft.OpenApi.Models.OpenApiPathItem)">
+            <summary>
+            حذف پارامترهای ورژن از PathItem
+            </summary>
+            <param name="pathItem">PathItem</param>
+        </member>
+        <member name="M:SendSMSSayyehBan.Config.RemoveVersionFromParameterFilter.RemoveVersionParametersFromOperation(Microsoft.OpenApi.Models.OpenApiOperation)">
+            <summary>
+            حذف پارامترهای ورژن از Operation
+            </summary>
+            <param name="operation">Operation</param>
+        </member>
+        <member name="M:SendSMSSayyehBan.Config.RemoveVersionFromParameterFilter.RemoveApiVersionParameters(System.Collections.Generic.IList{Microsoft.OpenApi.Models.OpenApiParameter})">
+            <summary>
+            حذف پارامترهای api-version از لیست پارامترها
+            </summary>
+            <param name="parameters">لیست پارامترها</param>
+        </member>
+        <member name="T:SendSMSSayyehBan.Config.RemoveApiVersionParameterFilter">
+            <summary>
+            فیلتر برای حذف پارامتر api-version از Operations (backup)
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Config.RemoveApiVersionParameterFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            اعمال فیلتر روی Operation
+            </summary>
+            <param name="operation">OpenAPI Operation</param>
+            <param name="context">Operation Filter Context</param>
+        </member>
+        <member name="T:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController">
+            <summary>
+            ارسال پیامک ورژن 1
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController.SendPattern(SendSMSSayyehBan.Model.SendPattern)">
             <summary>
             ارسال پیامک به صورت پترن
             </summary>
             <param name="sendPattern"></param>
             <returns></returns>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendNormalSingle(SendSMSSayyehBan.Model.SendNormalSingleModel)">
+        <member name="M:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController.SendNormalSingle(SendSMSSayyehBan.Model.SendNormalSingleModel)">
             <summary>
             ارسال پیامک به صورت سینگل یا آرایه از شماره ها
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendNormalFile(SendSMSSayyehBan.Model.SendNormalFileModel)">
+        <member name="M:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController.SendNormalFile(SendSMSSayyehBan.Model.SendNormalFileModel)">
             <summary>
             ارسال پیامک به صورت فایل
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPeerToPeerAsync(SendSMSSayyehBan.Model.SendPeerToPeerRequest)">
+        <member name="M:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController.SendPeerToPeerAsync(SendSMSSayyehBan.Model.SendPeerToPeerRequest)">
             <summary>
             ارسال پیامک به صورت همزمان
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.SendPeerToPeerByFileAsync(SendSMSSayyehBan.Model.SendPeerToPeerFileRequest)">
+        <member name="M:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController.SendPeerToPeerByFileAsync(SendSMSSayyehBan.Model.SendPeerToPeerFileRequest)">
             <summary>
             ارسال پیامک به صورت همزمان توسط فایل
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.GetCredit(SendSMSSayyehBan.Model.BaseModel)">
+        <member name="M:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController.GetCredit(SendSMSSayyehBan.Model.BaseModel)">
             <summary>
             نمایش موجودی شارژ پانل
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.SMS_SayyehBanController.GetSendList(SendSMSSayyehBan.Model.GetSendListModel)">
+        <member name="M:SendSMSSayyehBan.Controllers.V1.SMS_SayyehBanController.GetSendList(SendSMSSayyehBan.Model.GetSendListModel)">
             <summary>
             نمایش پیام های ارسال شده
             </summary>
             <param name="model"></param>
             <returns></returns>
+        </member>
+        <member name="T:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController">
+            <summary>
+            ارسال پیامک ورژن 2
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SendSMSSayyehBan.Model.BaseModel">
+            <summary>
+            اطلاعات پایه
+            </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.BaseModel.APILink">
             <summary>
@@ -69,6 +144,11 @@
             هستش که از سامانه دریافت میکنید من به صورت 
             Header
             در نیاوردم چون قرار نیست سامانه پیامکی بنویسید بلکه قرار هستش به کاربران خودبون از درون سورس هامون ارسال پیامک انجام بدیم
+            </summary>
+        </member>
+        <member name="T:SendSMSSayyehBan.Model.SendPattern">
+            <summary>
+            ارسال پترن
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendPattern.FromNumber">
@@ -92,6 +172,11 @@
             اگر تاریخ و زمان به میلادی پیش فرض ندید سیستم به صورت پیش تاریخ و زمان جاری ست میکنه ولی برحسب Utceثبت میشه تا ارسال انجام بشه
             </summary>
         </member>
+        <member name="T:SendSMSSayyehBan.Model.SendNormalSingleModel">
+            <summary>
+            ارسال معمولی تک
+            </summary>
+        </member>
         <member name="P:SendSMSSayyehBan.Model.SendNormalSingleModel.FromNumber">
             <summary>
             شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
@@ -113,6 +198,11 @@
             متن ارسال پیامک
             </summary>
         </member>
+        <member name="T:SendSMSSayyehBan.Model.SendNormalFileModel">
+            <summary>
+            ارسال معمولی به صورت فایل
+            </summary>
+        </member>
         <member name="P:SendSMSSayyehBan.Model.SendNormalFileModel.Sender">
             <summary>
             شماره ارسال کننده یعنی از چه شماری رار هستش ارسال بشه پیش فرض 983000505 هستش ولی باز عوض شد شماره دیگه بهش بدید
@@ -128,6 +218,11 @@
             متن ارسال پیامک
             </summary>
         </member>
+        <member name="T:SendSMSSayyehBan.Model.GetSendListModel">
+            <summary>
+            دریافت لیست مدل
+            </summary>
+        </member>
         <member name="P:SendSMSSayyehBan.Model.GetSendListModel.page">
             <summary>
             دریافت شماره صفحه جاری
@@ -136,6 +231,11 @@
         <member name="P:SendSMSSayyehBan.Model.GetSendListModel.per_page">
             <summary>
             نمایش تعداد صفحه مورد نظر
+            </summary>
+        </member>
+        <member name="T:SendSMSSayyehBan.Model.SendPeerToPeerRequest">
+            <summary>
+            ارسال نظر به نظیر
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.Recipients">
@@ -151,6 +251,11 @@
         <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerRequest.Messages">
             <summary>
             ارسال متن به صورت همزمان و آرایه برحسب شماره های همزمان که برحسب شماره ها متن پیام مختلف به هرکدام به چه صورت ارسال بشه
+            </summary>
+        </member>
+        <member name="T:SendSMSSayyehBan.Model.SendPeerToPeerFileRequest">
+            <summary>
+            ارسال نظر به نظیر
             </summary>
         </member>
         <member name="P:SendSMSSayyehBan.Model.SendPeerToPeerFileRequest.FromNumber">

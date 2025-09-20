@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SayyehBanTools.Sender;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
+using SayehBanTools.Sender;
 using SendSMSSayyehBan.Model;
 using System.Net;
 
-namespace SendSMSSayyehBan.Controllers;
+namespace SendSMSSayyehBan.Controllers.V1;
 
-[Route("api/[controller]/[action]")]
+/// <summary>
+/// ارسال پیامک ورژن 1
+/// </summary>
+[ApiVersion("1")]
+[Route("api/v{version:apiVersion=1}/[controller]/[action]")]
 [ApiController]
 public class SMS_SayyehBanController : ControllerBase
 {
