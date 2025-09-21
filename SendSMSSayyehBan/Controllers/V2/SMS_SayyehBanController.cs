@@ -43,5 +43,61 @@ namespace SendSMSSayyehBan.Controllers.V2
                 return StatusCode(500);
             }
         }
+        /// <summary>
+        /// محاسبه هزینه پیامک
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Calculate_SMS_PriceAsync([FromQuery] Calculate_SMS_Price_Parameters model)
+        {
+
+            try
+            {
+                var jsonResult = await _SMS.Calculate_SMS_PriceAsync(model);
+                return new JsonResult(jsonResult);
+            }
+            catch
+            {
+
+                return StatusCode(500);
+            }
+        }
+        /// <summary>
+        /// ارسال پیامک از طریق WebService
+        /// </summary>
+        /// <param name="model">پارامترهای کامل ارسال</param>
+        /// <returns>نتیجه ارسال</returns>
+        [HttpPost]
+        public async Task<IActionResult> SendWebserviceSMSAsync([FromBody] SendWebserviceSMSParameters model)
+        {
+            try
+            {
+                var jsonResult = await _SMS.SendWebserviceSMSAsync(model);
+                return new JsonResult(jsonResult);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+        /// <summary>
+        /// ارسال پیامک توسط فایل
+        /// </summary>
+        /// <param name="model">پارامترهای ارسال فایل</param>
+        /// <returns>نتیجه ارسال</returns>
+        [HttpPost]
+        public async Task<IActionResult> SendWebservSendFileSMSAsynciceSMSAsync([FromForm] SendFileSMSParameters model)
+        {
+            try
+            {
+                var jsonResult = await _SMS.SendFileSMSAsync(model);
+                return new JsonResult(jsonResult);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
     }
 }
