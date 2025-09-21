@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using static SayehBanTools.Sender.SMS_System;
-
-namespace SendSMSSayyehBan.Model;
+﻿namespace SendSMSSayyehBan.Model;
 /// <summary>
 /// اطلاعات پایه
 /// </summary>

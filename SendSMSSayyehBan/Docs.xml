@@ -117,11 +117,17 @@
             ارسال پیامک ورژن 2
             </summary>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.Get">
+        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.#ctor(SendSMSSayyehBan.Service.Interface.I_SMS)">
             <summary>
-            
+            کلاس سازنده
             </summary>
-            <returns></returns>
+            <param name="sms">سرویس SMS</param>
+        </member>
+        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.GetCreditAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.DefaultValueParameters)">
+            <summary>
+            دریافت موجودی پیامک
+            </summary>
+            <returns>اطلاعات اعتبارات</returns>
         </member>
         <member name="T:SendSMSSayyehBan.Model.BaseModel">
             <summary>
@@ -267,6 +273,55 @@
             <summary>
             ارسال فایل اکسل برای ارسال همزمان
             </summary>
+        </member>
+        <member name="T:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS">
+            <summary>
+            مدل پیامک
+            </summary>
+        </member>
+        <member name="T:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.DefaultValueParameters">
+            <summary>
+            مقادیر پیش فرض
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.DefaultValueParameters.BaseUrl">
+            <summary>
+            آدرس پایه API
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.DefaultValueParameters.Api">
+            <summary>
+            لینک API
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.DefaultValueParameters.API_Key">
+            <summary>
+            کلید دسترسی
+            </summary>
+        </member>
+        <member name="T:SendSMSSayyehBan.Service.Interface.I_SMS">
+            <summary>
+            اینترفیس پیامک
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Service.Interface.I_SMS.GetCreditAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.DefaultValueParameters)">
+            <summary>
+            دریافت موجودی پیامک
+            </summary>
+            <param name="model">تنظیمات API</param>
+            <returns>لیست اطلاعات اعتبارات به صورت string</returns>
+        </member>
+        <member name="T:SendSMSSayyehBan.Service.Repository.R_SMS">
+            <summary>
+            ریپازیتوری پیامک - سورس کمکی
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Service.Repository.R_SMS.GetCreditAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.DefaultValueParameters)">
+            <summary>
+            دریافت موجودی پیامک - فقط JSON اصلی
+            </summary>
+            <param name="model">تنظیمات API کامل از درخواست</param>
+            <returns>لیست اطلاعات اعتبارات</returns>
         </member>
     </members>
 </doc>

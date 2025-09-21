@@ -1,14 +1,17 @@
 ﻿using Asp.Versioning;
+using Asp.Versioning.ApiExplorer;
 using Microsoft.AspNetCore.Localization;
 using SendSMSSayyehBan.Config;
+using SendSMSSayyehBan.Service.Interface;
+using SendSMSSayyehBan.Service.Repository;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using Asp.Versioning.ApiExplorer;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddControllers();
+// ثبت سرویس SMS بدون وابستگی - همه تنظیمات از درخواست می‌آید
+builder.Services.AddScoped<I_SMS, R_SMS>();
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     options.DefaultRequestCulture = new RequestCulture("en-US");
