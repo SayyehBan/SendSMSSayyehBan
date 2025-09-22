@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
-using SendSMSSayyehBan.Service.Interface;
-using static SendSMSSayyehBan.Model.ModelSMS2.VM_SMS;
+using SayehBanTools.Sender.Service.Interface;
+using static SayehBanTools.Model.Entities.VM_SMS;
 
 namespace SendSMSSayyehBan.Controllers.V2
 {
@@ -128,6 +128,42 @@ namespace SendSMSSayyehBan.Controllers.V2
             try
             {
                 var jsonResult = await _SMS.SendPatternSMSAsync(model);
+                return new JsonResult(jsonResult);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+        /// <summary>
+        /// ارسال پیامک Peer to Peer
+        /// </summary>
+        /// <param name="model">پارامترهای ارسال Peer to Peer</param>
+        /// <returns>نتیجه ارسال</returns>
+        [HttpPost]
+        public async Task<IActionResult> SendPeerToPeerSMSAsync([FromBody] SendPeerToPeerSMSParameters model)
+        {
+            try
+            {
+                var jsonResult = await _SMS.SendPeerToPeerSMSAsync(model);
+                return new JsonResult(jsonResult);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+        /// <summary>
+        /// ارسال پیامک Peer to Peer File
+        /// </summary>
+        /// <param name="model">پارامترهای ارسال Peer to Peer</param>
+        /// <returns>نتیجه ارسال</returns>
+        [HttpPost]
+        public async Task<IActionResult> SendPeertoPeerbyFileAsync([FromForm] SendPeertoPeerbyFileParameters model)
+        {
+            try
+            {
+                var jsonResult = await _SMS.SendPeertoPeerbyFile(model);
                 return new JsonResult(jsonResult);
             }
             catch

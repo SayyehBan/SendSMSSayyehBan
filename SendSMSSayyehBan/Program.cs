@@ -1,9 +1,9 @@
 ﻿using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using Microsoft.AspNetCore.Localization;
+using SayehBanTools.Sender.Service.Interface;
+using SayehBanTools.Sender.Service.Repository;
 using SendSMSSayyehBan.Config;
-using SendSMSSayyehBan.Service.Interface;
-using SendSMSSayyehBan.Service.Repository;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Globalization;
 
