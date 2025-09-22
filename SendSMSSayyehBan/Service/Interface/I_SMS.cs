@@ -1,5 +1,6 @@
 ﻿using static SendSMSSayyehBan.Model.ModelSMS2.VM_SMS;
 
+
 namespace SendSMSSayyehBan.Service.Interface;
 
 /// <summary>
@@ -31,4 +32,16 @@ public interface I_SMS
     /// <param name="model"></param>
     /// <returns></returns>
     Task<object> SendFileSMSAsync(SendFileSMSParameters model);
+    /// <summary>
+    /// ارسال پیامک توسط Keyword
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    Task<object> SendKeywordSMSAsync(SendKeywordSMSParameters model);
+    /// <summary>
+    /// ارسال پیامک پترن
+    /// </summary>
+    /// <param name="model">پارامترهای ارسال پترن</param>
+    /// <returns>نتیجه ارسال</returns>
+    Task<object> SendPatternSMSAsync(SendPatternSMSParameters model);
 }

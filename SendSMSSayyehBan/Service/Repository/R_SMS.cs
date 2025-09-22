@@ -132,10 +132,80 @@ public class R_SMS : I_SMS
         }
     }
     /// <summary>
-      /// ارسال پیامک از طریق WebService
-      /// </summary>
-      /// <param name="model">پارامترهای کامل ارسال</param>
-      /// <returns>نتیجه ارسال</returns>
+    /// ارسال پیامک توسط Keyword
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    public async Task<object> SendKeywordSMSAsync(SendKeywordSMSParameters model)
+    {
+        try
+        {
+            if (model.files == null || model.files.Length == 0)
+                return new { error = "هیچ فایلی انتخاب نشده است" };
+
+            var options = new RestClientOptions(model.BaseUrl);
+            var client = new RestClient(options);
+            var request = new RestRequest(model.Api, Method.Post);
+
+            request.AddHeader("Authorization", model.API_Key);
+            request.AlwaysMultipartFormData = true;
+
+            // اضافه کردن parameters
+            request.AddParameter("sending_type", model.sending_type ?? "keyword");
+            request.AddParameter("from_number", model.from_number ?? "+983000505");
+            request.AddParameter("message", model.message ?? string.Empty);
+            request.AddParameter("send_time", model.send_time.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            // اضافه کردن فایل‌ها
+            if (model.files != null && model.files.Length > 0)
+            {
+                foreach (var file in model.files)
+                {
+                    if (file != null && file.Length > 0)
+                    {
+                        // خواندن کامل فایل (حل CA2022)
+                        using var stream = file.OpenReadStream();
+                        using var memoryStream = new MemoryStream();
+
+                        // خواندن کامل با loop (حل CA2022)
+                        var buffer = new byte[8192]; // 8KB buffer
+                        int bytesRead;
+                        while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                        {
+                            await memoryStream.WriteAsync(buffer, 0, bytesRead);
+                        }
+
+                        var fileBytes = memoryStream.ToArray();
+
+                        // اضافه کردن فایل با RestSharp (حل CS1061)
+                        request.AddFile("files[]", fileBytes, file.FileName ?? "numbers.txt", file.ContentType ?? "text/plain");
+                    }
+                }
+            }
+
+            RestResponse response = await client.ExecuteAsync(request);
+
+            if (response.IsSuccessful && !string.IsNullOrEmpty(response.Content))
+            {
+                var jsonDocument = JsonDocument.Parse(response.Content);
+                var result = JsonSerializer.Deserialize<object>(jsonDocument.RootElement.GetRawText());
+
+                return result ?? new { error = "خطا در deserialize اطلاعات" };
+            }
+
+            return new { error = $"خطا در ارسال پیامک: {response.StatusCode} - {response.StatusDescription}" };
+        }
+        catch (Exception ex)
+        {
+            return new { error = $"خطای عمومی: {ex.Message}" };
+        }
+    }
+
+    /// <summary>
+    /// ارسال پیامک از طریق WebService
+    /// </summary>
+    /// <param name="model">پارامترهای کامل ارسال</param>
+    /// <returns>نتیجه ارسال</returns>
     public async Task<object> SendWebserviceSMSAsync(SendWebserviceSMSParameters model)
     {
         try
@@ -171,6 +241,62 @@ public class R_SMS : I_SMS
             }
 
             return new { error = $"خطا در ارسال پیامک: {response.StatusCode} - {response.StatusDescription}" };
+        }
+        catch (JsonException ex)
+        {
+            return new { error = $"خطا در پردازش JSON: {ex.Message}" };
+        }
+        catch (Exception ex)
+        {
+            return new { error = $"خطای عمومی: {ex.Message}" };
+        }
+    }
+    /// <summary>
+    /// ارسال پیامک پترن
+    /// </summary>
+    /// <param name="model">پارامترهای ارسال پترن</param>
+    /// <returns>نتیجه ارسال</returns>
+    public async Task<object> SendPatternSMSAsync(SendPatternSMSParameters model)
+    {
+        try
+        {
+            // اعتبارسنجی
+            if (string.IsNullOrEmpty(model.Code))
+                return new { error = "کد پترن الزامی است" };
+
+            if (!model.Recipients.Any())
+                return new { error = "حداقل یک گیرنده الزامی است" };
+
+            var options = new RestClientOptions(model.BaseUrl);
+            var client = new RestClient(options);
+            var request = new RestRequest(model.Api, Method.Post);
+            request.AddHeader("Authorization", model.API_Key);
+
+            // تنظیم JSON options برای فارسی
+            var jsonOptions = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                WriteIndented = false,
+                // تنظیم فرمت DateTime
+                Converters = { new CustomDateTimeConverter() }
+            };
+
+            // Serialize کردن مدل
+            var jsonContent = JsonSerializer.Serialize(model, jsonOptions);
+            request.AddStringBody(jsonContent, ContentType.Json);
+
+            RestResponse response = await client.ExecuteAsync(request);
+
+            if (response.IsSuccessful && !string.IsNullOrEmpty(response.Content))
+            {
+                var jsonDocument = JsonDocument.Parse(response.Content);
+                var result = JsonSerializer.Deserialize<object>(jsonDocument.RootElement.GetRawText());
+
+                return result ?? new { error = "خطا در deserialize اطلاعات" };
+            }
+
+            return new { error = $"خطا در ارسال پیامک پترن: {response.StatusCode} - {response.StatusDescription}" };
         }
         catch (JsonException ex)
         {

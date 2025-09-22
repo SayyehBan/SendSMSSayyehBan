@@ -143,11 +143,25 @@
             <param name="model">پارامترهای کامل ارسال</param>
             <returns>نتیجه ارسال</returns>
         </member>
-        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.SendWebservSendFileSMSAsynciceSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendFileSMSParameters)">
+        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.SendFileSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendFileSMSParameters)">
             <summary>
             ارسال پیامک توسط فایل
             </summary>
             <param name="model">پارامترهای ارسال فایل</param>
+            <returns>نتیجه ارسال</returns>
+        </member>
+        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.SendKeywordSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters)">
+            <summary>
+            ارسال پیامک توسط Keyword
+            </summary>
+            <param name="model">پارامترهای ارسال Keyword</param>
+            <returns>نتیجه ارسال</returns>
+        </member>
+        <member name="M:SendSMSSayyehBan.Controllers.V2.SMS_SayyehBanController.SendPatternSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters)">
+            <summary>
+            ارسال پیامک از طریق Pattern
+            </summary>
+            <param name="model">پارامترهای کامل ارسال</param>
             <returns>نتیجه ارسال</returns>
         </member>
         <member name="T:SendSMSSayyehBan.Model.BaseModel">
@@ -421,6 +435,89 @@
             ارسال پارامترهای پیامک
             </summary>
         </member>
+        <member name="T:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters">
+            <summary>
+            ارسال پیامک به صورت کلمات کلیدی
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters.sending_type">
+            <summary>
+            نوع ارسال پیامک keyword
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters.from_number">
+            <summary>
+            ارسال از شماره ارسال کننده +983000505
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters.message">
+            <summary>
+            متن پیام ارسال درود {ex_B} م۱ {ex_C}
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters.files">
+            <summary>
+            فایل شماره ها
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters.send_time">
+            <summary>
+            زمان ارسال (فرمت: yyyy-MM-dd HH:mm:ss)
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters.#ctor">
+            <summary>
+            ارسال پارامترهای پیامک
+            </summary>
+        </member>
+        <member name="T:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters">
+            <summary>
+            ارسال پیامک به صورت پترن
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.SendingType">
+            <summary>
+            نوع ارسال پیامک pattern
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.FromNumber">
+            <summary>
+            ارسال از شماره ارسال کننده +983000505
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.Code">
+            <summary>
+            کد پترن
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.Recipients">
+            <summary>
+            لیست گیرندگان (آرایه string)
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.Params">
+            <summary>
+            پارامترهای پترن (Dictionary اختیاری)
+            </summary>
+        </member>
+        <member name="P:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.send_time">
+            <summary>
+            زمان ارسال (فرمت: yyyy-MM-dd HH:mm:ss)
+            </summary>
+        </member>
+        <member name="M:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.SetParams(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Helper method برای تنظیم Params
+            </summary>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters.AddParam(System.String,System.String)">
+            <summary>
+            Helper method برای اضافه کردن پارامتر
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
         <member name="T:SendSMSSayyehBan.Service.Interface.I_SMS">
             <summary>
             اینترفیس پیامک
@@ -454,6 +551,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:SendSMSSayyehBan.Service.Interface.I_SMS.SendKeywordSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters)">
+            <summary>
+            ارسال پیامک توسط Keyword
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SendSMSSayyehBan.Service.Interface.I_SMS.SendPatternSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters)">
+            <summary>
+            ارسال پیامک پترن
+            </summary>
+            <param name="model">پارامترهای ارسال پترن</param>
+            <returns>نتیجه ارسال</returns>
+        </member>
         <member name="T:SendSMSSayyehBan.Service.Repository.R_SMS">
             <summary>
             ریپازیتوری پیامک - سورس کمکی
@@ -480,11 +591,25 @@
             <param name="model">پارامترهای ارسال فایل</param>
             <returns>نتیجه ارسال</returns>
         </member>
+        <member name="M:SendSMSSayyehBan.Service.Repository.R_SMS.SendKeywordSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendKeywordSMSParameters)">
+            <summary>
+            ارسال پیامک توسط Keyword
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:SendSMSSayyehBan.Service.Repository.R_SMS.SendWebserviceSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendWebserviceSMSParameters)">
             <summary>
             ارسال پیامک از طریق WebService
             </summary>
             <param name="model">پارامترهای کامل ارسال</param>
+            <returns>نتیجه ارسال</returns>
+        </member>
+        <member name="M:SendSMSSayyehBan.Service.Repository.R_SMS.SendPatternSMSAsync(SendSMSSayyehBan.Model.ModelSMS2.VM_SMS.SendPatternSMSParameters)">
+            <summary>
+            ارسال پیامک پترن
+            </summary>
+            <param name="model">پارامترهای ارسال پترن</param>
             <returns>نتیجه ارسال</returns>
         </member>
         <member name="T:SendSMSSayyehBan.Service.Repository.CustomDateTimeConverter">

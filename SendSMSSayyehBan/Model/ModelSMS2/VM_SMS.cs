@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace SendSMSSayyehBan.Model.ModelSMS2;
 /// <summary>
@@ -138,6 +137,100 @@ public class VM_SMS
         public SendFileSMSParameters()
         {
             files = Array.Empty<IFormFile>();
+        }
+    }
+    /// <summary>
+    /// ارسال پیامک به صورت کلمات کلیدی
+    /// </summary>
+    public class SendKeywordSMSParameters : DefaultValueParameters
+    {
+        /// <summary>
+        /// نوع ارسال پیامک keyword
+        /// </summary>
+        public string sending_type { get; set; } = "keyword";
+        /// <summary>
+        /// ارسال از شماره ارسال کننده +983000505
+        /// </summary>
+        [JsonPropertyName("from_number")]
+        public string from_number { get; set; } = "+983000505";
+        /// <summary>
+        /// متن پیام ارسال درود {ex_B} م۱ {ex_C}
+        /// </summary>
+        public string message { get; set; } = string.Empty;
+        /// <summary>
+        /// فایل شماره ها
+        /// </summary>
+        public IFormFile[] files { get; set; } = null!;
+        /// <summary>
+        /// زمان ارسال (فرمت: yyyy-MM-dd HH:mm:ss)
+        /// </summary>
+        public DateTime send_time { get; set; } = DateTime.Now.AddSeconds(30);
+        /// <summary>
+        /// ارسال پارامترهای پیامک
+        /// </summary>
+        public SendKeywordSMSParameters()
+        {
+            files = Array.Empty<IFormFile>();
+        }
+    }
+    /// <summary>
+    /// ارسال پیامک به صورت پترن
+    /// </summary>
+    public class SendPatternSMSParameters : DefaultValueParameters
+    {
+        /// <summary>
+        /// نوع ارسال پیامک pattern
+        /// </summary>
+        [JsonPropertyName("sending_type")]
+        public string SendingType { get; set; } = "pattern";
+
+        /// <summary>
+        /// ارسال از شماره ارسال کننده +983000505
+        /// </summary>
+        [JsonPropertyName("from_number")]
+        public string FromNumber { get; set; } = "+983000505";
+
+        /// <summary>
+        /// کد پترن
+        /// </summary>
+        [JsonPropertyName("code")]
+        public string Code { get; set; } = string.Empty;
+
+        /// <summary>
+        /// لیست گیرندگان (آرایه string)
+        /// </summary>
+        [JsonPropertyName("recipients")]
+        public List<string> Recipients { get; set; } = new List<string>();
+
+        /// <summary>
+        /// پارامترهای پترن (Dictionary اختیاری)
+        /// </summary>
+        [JsonPropertyName("params")]
+        public Dictionary<string, string>? Params { get; set; }
+
+        /// <summary>
+        /// زمان ارسال (فرمت: yyyy-MM-dd HH:mm:ss)
+        /// </summary>
+        [JsonPropertyName("send_time")]
+        public DateTime send_time { get; set; } = DateTime.Now.AddSeconds(30);
+        /// <summary>
+        /// Helper method برای تنظیم Params
+        /// </summary>
+        /// <param name="parameters"></param>
+        public void SetParams(Dictionary<string, string> parameters)
+        {
+            Params = parameters ?? new Dictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Helper method برای اضافه کردن پارامتر
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public void AddParam(string key, string value)
+        {
+            Params ??= new Dictionary<string, string>();
+            Params[key] = value;
         }
     }
 }

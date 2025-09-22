@@ -87,11 +87,47 @@ namespace SendSMSSayyehBan.Controllers.V2
         /// <param name="model">پارامترهای ارسال فایل</param>
         /// <returns>نتیجه ارسال</returns>
         [HttpPost]
-        public async Task<IActionResult> SendWebservSendFileSMSAsynciceSMSAsync([FromForm] SendFileSMSParameters model)
+        public async Task<IActionResult> SendFileSMSAsync([FromForm] SendFileSMSParameters model)
         {
             try
             {
                 var jsonResult = await _SMS.SendFileSMSAsync(model);
+                return new JsonResult(jsonResult);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+        /// <summary>
+        /// ارسال پیامک توسط Keyword
+        /// </summary>
+        /// <param name="model">پارامترهای ارسال Keyword</param>
+        /// <returns>نتیجه ارسال</returns>
+        [HttpPost]
+        public async Task<IActionResult> SendKeywordSMSAsync([FromForm] SendKeywordSMSParameters model)
+        {
+            try
+            {
+                var jsonResult = await _SMS.SendKeywordSMSAsync(model);
+                return new JsonResult(jsonResult);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+        /// <summary>
+        /// ارسال پیامک از طریق Pattern
+        /// </summary>
+        /// <param name="model">پارامترهای کامل ارسال</param>
+        /// <returns>نتیجه ارسال</returns>
+        [HttpPost]
+        public async Task<IActionResult> SendPatternSMSAsync([FromBody] SendPatternSMSParameters model)
+        {
+            try
+            {
+                var jsonResult = await _SMS.SendPatternSMSAsync(model);
                 return new JsonResult(jsonResult);
             }
             catch
