@@ -21,17 +21,12 @@
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="RestSharp" Version="112.1.0" />
+    <PackageReference Include="SayehBanTools" Version="1.7.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Model\ModelSMS2\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="SayehBanTools">
-      <HintPath>..\..\..\..\..\..\SayyehBan\Dll\SayehBanTools\SayehBanTools\bin\Debug\net9.0\SayehBanTools.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
